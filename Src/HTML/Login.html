@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="/Src/HTML/styles.css">
+    <link rel="shortcut icon" href="https://lh5.googleusercontent.com/-szLfKb6V88g/AAAAAAAAAAI/AAAAAAAAAAA/Bbj72Pfk7QI/s45-k-cc-mo/photo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <h1>Login Page</h1>
+    <!-- Add Lock Screen -->
+    <div id="lockScreen" class="lock-screen">
+        <div class="lock-content">
+            <div class="lock-icon">
+                <i class="fas fa-lock fa-3x"></i>
+            </div>
+            <h2>Security Check</h2>
+            <p>Enter PIN to continue</p>
+            <small class="pin-hint">Hint: When did TheAdiCoder brand start? (Year)</small>
+            <div class="pin-container">
+                <input type="password" 
+                       maxlength="1" 
+                       class="pin-input" 
+                       data-index="0" 
+                       autocomplete="off" 
+                       inputmode="numeric" 
+                       pattern="[0-9]*">
+                <input type="password" 
+                       maxlength="1" 
+                       class="pin-input" 
+                       data-index="1" 
+                       autocomplete="off" 
+                       inputmode="numeric" 
+                       pattern="[0-9]*">
+                <input type="password" 
+                       maxlength="1" 
+                       class="pin-input" 
+                       data-index="2" 
+                       autocomplete="off" 
+                       inputmode="numeric" 
+                       pattern="[0-9]*">
+                <input type="password" 
+                       maxlength="1" 
+                       class="pin-input" 
+                       data-index="3" 
+                       autocomplete="off" 
+                       inputmode="numeric" 
+                       pattern="[0-9]*">
+            </div>
+            <div class="error-message" id="pinError"></div>
+            <div class="countdown-timer" id="countdownTimer">
+                <span id="minutes">02</span>:<span id="seconds">00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Existing content -->
+    <div class="wrapper" style="display: none;">
+        <div class="title">Login Form</div>
+        <div class="form-container">
+            <form id="loginForm" class="login">
+                <div class="field">
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <input style="border-radius: 10px;padding:10px;color:rgb(13, 169, 39)" type="email" id="loginEmail" placeholder="Email Address" required>
+                    <div class="error-message" id="loginEmailError"></div>
+                </div>
+                <div class="field">
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <input style="border-radius: 10px;padding:10px;color:rgb(56, 173, 23)" type="password" id="loginPassword" placeholder="Password" required>
+                    <div class="error-message" id="loginPasswordError"></div>
+                </div>
+                <div class="pass-link"><a href="#" id="forgotPassword">Forgot password?</a></div>
+                <div class="field btn">
+                    <div class="btn-layer"></div>
+                    <input type="submit" value="Login" id="loginButton">
+                    <div class="loader" id="loginLoader"></div>
+                </div>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <div class="field btn google-btn">
+                    <button type="button" id="googleSignIn">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAzFBMVEVHcEz////////+/v77+/vx8fL9/f309fX+/v739/f////09PXOz8/5+vr8/P3////////29vf///////84qlf8wAdGiPX8/PzsUUTqQjQsqFLrSj3S3/w6g/TqPCs0gPQgpUf85+bv9P+63sL62Nb+8ef4ycbw+PJkunkeePP81HXwgGv0jhzc5/3o9efX7N5Fr19Uj/WQy562zPr2trL94KDzoJrzoJv80Gjyl5H94qgyh9v7xzihsSp+wYV1sE5ZtXBmmvUynoWKrvzKDGT6AAAAE3RSTlMAW+TTeBLcHLMt1WsKzfUznkBIxSDAuAAAAUZJREFUKJFtktligkAMRUFZxKVuDMOAggpu1apVu+/t//9TkxBU1PsySQ4hlyGadpTd0fWOrV2R3eqyWhe80j1RpYCc7pmcI2tyaZimQw6bOTMplU9hpKIofJSUmgwtTCYq9EFhqKIJ5lbGdGIRAGhUQLNX6wRLOA2Y8vdpuvfVOJtaOjhdhL56yYrjU8cGFsRSLc4/x+DPfxBiSZN6LMlXUYXzVghBT8/7pPkdxFX28yzEO8HYI8U9dlQudMZx3AeInWWe+SrExxrhCLTre3E+M3P7FXznLn887z53a2PwGbjBLLvUP2jcYUC/FYdOA9d1g22SbN1fbizT9bUxXA+QguB4G2GlfbIFqw1i0GCzKmzDDQ1LZgPQLKHk5rAJpmSj0ykH0jxArW4V79yqF1bMkEckjYvFrTWIy0btApFsx7m68Ff1D4OdMHbngtKsAAAAAElFTkSuQmCC" alt="Google logo">
+                        <span>Sign in with Google</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Reset Password Modal -->
+    <div id="resetPasswordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Reset Password</h2>
+            <p>Enter your email address to receive a password reset link.</p>
+            <div class="field">
+                <div class="input-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <input type="email" id="resetEmail" placeholder="Email Address" required>
+                <div class="error-message" id="resetEmailError"></div>
+            </div>
+            <div class="field btn">
+                <div class="btn-layer"></div>
+                <input type="button" value="Send Reset Link" id="sendResetLink">
+                <div class="loader" id="resetLoader"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-analytics.js"></script>
+    <script type="module" src="/Src/HTML/script.js"></script>
+</body>
+</html>
